@@ -25,8 +25,8 @@ const generateDownloadButton = () => {
   let googleSearchButton = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b");
 
   let downloadButton = googleSearchButton.cloneNode(true);
-  downloadButton.value = 'Download Background Image';
-  downloadButton.ariaLabel = 'Download Background Image';
+  downloadButton.value = 'Get That Background';
+  downloadButton.ariaLabel = 'Get Background Background';
   
   // Download Button listener to download background image
   downloadButton.addEventListener('click', (event) => {
@@ -50,8 +50,8 @@ const generateDownloadButton = () => {
 const generatePictureSearch = () => {
   let googleSearchButton = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b");
   let imageSearch = googleSearchButton.cloneNode(true);
-  imageSearch.value = 'Get Your Image';
-  imageSearch.ariaLabel = 'Get Your Image';
+  imageSearch.value = 'Splash My Search';
+  imageSearch.ariaLabel = 'Splash My Search';
   
   // Image Search Button listener on click - get new image with search value
   imageSearch.addEventListener('click', (event) => {
@@ -78,12 +78,17 @@ const generatePictureSearch = () => {
 const generateStartSlideShowButton = () => {
   let googleSearchButton = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b");
   let startShowButton = googleSearchButton.cloneNode(true);
-  startShowButton.value = 'The Slide Show Goes On';
-  startShowButton.ariaLabel = 'The Slide Show Goes OnGet Your Image';
+  startShowButton.value = 'Resume GoogleSplash';
+  startShowButton.ariaLabel = 'Resume GoogleSplash';
   
   // Image Search Button listener on click - get new image with search value
   startShowButton.addEventListener('click', (event) => {
+    // Get text input
+    const searchText = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input").value;
     
+    // Update default search words
+    searchWords = searchText.split(' ');
+
     // Cancel default button click behavior
     event.preventDefault();
     
@@ -100,8 +105,8 @@ const generateStartSlideShowButton = () => {
 const generateStopSlideShowButton = () => {
   let googleSearchButton = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b");
   let stopSlideShowButton = googleSearchButton.cloneNode(true);
-  stopSlideShowButton.value = 'Pause on This Image';
-  stopSlideShowButton.ariaLabel = 'Pause on This Image';
+  stopSlideShowButton.value = 'Pause GoogleSplash';
+  stopSlideShowButton.ariaLabel = 'Pause GoogleSplash';
 
   // Image Search Button listener on click - get new image with search value
   stopSlideShowButton.addEventListener('click', (event) => {
@@ -138,7 +143,7 @@ window.addEventListener('load', () => {
   // Get and set default background image on initial load
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "100% 100%";
-  document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1568059985329-4a7bdd1154de?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=852&ixid=MnwxfDB8MXxyYW5kb218MHx8YXBwbGV8fHx8fHwxNjMyNDE2NjE0&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1745')";
+  document.body.style.backgroundImage = "url('https://github.com/adamISheff/FTRI4-Chrome-extension/blob/main/imgs/Google-Splash-Background2.jpg?raw=true')";
 
   // Remove google logo image
   const imgs = document.getElementsByTagName('img')
