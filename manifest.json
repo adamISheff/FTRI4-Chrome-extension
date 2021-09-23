@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Background Image Generator",
-  "version": "1.0",
-  "description": "Get an Unsplashed background wherever you go...",
+  "version": "1.1",
+  "description": "Get an Unsplashed background slideshow while you search...",
   "author" : "",
   "homepage_url": "http://google.com",
   "icons": { 
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png" 
+    "16": "./imgs/icon16.png",
+    "48": "./imgs/icon48.png",
+    "128": "./imgs/icon128.png" 
   },
   "content_scripts": [
     {
