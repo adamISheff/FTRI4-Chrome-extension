@@ -1,0 +1,11 @@
+{
+  "name": "chrome extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content.js",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.0.0",
+    "unsplash-js": "^7.0.15"
+  }
+}
