@@ -102,6 +102,29 @@ const generateStartSlideShowButton = () => {
   searchButtonDiv.appendChild(startShowButton);
 }
 
+// Add button to stop slideshow
+const generateStopSlideShowButton = () => {
+  let googleSearchButton = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b");
+  let stopSlideShowButton = googleSearchButton.cloneNode(true);
+  stopSlideShowButton.value = 'Pause on This Image';
+  stopSlideShowButton.ariaLabel = 'Pause on This Image';
+
+  // Image Search Button listener on click - get new image with search value
+  stopSlideShowButton.addEventListener('click', (event) => {
+    
+    // Cancel default button click behavior
+    event.preventDefault();
+    
+    // Start slideshow
+    stopSlideShow();    
+  });
+
+  // Append cloned button to div containing search buttons
+  let searchButtonDiv = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center");
+  searchButtonDiv.appendChild(stopSlideShowButton);
+}
+
+
 const startSlideShow = () => {
   if (!slideshow) {
     slideshow = setInterval(() => {
@@ -122,6 +145,7 @@ window.addEventListener('load', (event) => {
   // Get and set default background image on initial load
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "100% 100%";
+  document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1568059985329-4a7bdd1154de?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=852&ixid=MnwxfDB8MXxyYW5kb218MHx8YXBwbGV8fHx8fHwxNjMyNDE2NjE0&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1745')";
   // Remove google logo image
   const imgs = document.getElementsByTagName('img')
   imgs[imgs.length - 2].remove();
@@ -133,6 +157,7 @@ window.addEventListener('load', (event) => {
   generateDownloadButton();
   generatePictureSearch();
   generateStartSlideShowButton();
+  generateStopSlideShowButton();
 });
 
 // Initialize slideshow
