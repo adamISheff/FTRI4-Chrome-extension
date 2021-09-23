@@ -15,13 +15,23 @@ const randomize = () => {
   }
 }
 
+const setNewBackground = () => {
+  
+  fetch(`https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${randomize()}`).then( data => {
+    console.log('setting url...');
+    console.log('url: ' + data.url);
+    document.body.style.backgroundImage = `url(${data.url})`;         
+  });
+
+}
+
 // On Initial Load
 window.addEventListener('load', (event) => {
   
-  // Get and set background image
+  // Get and set background image on initial load
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "100% 100%";
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${randomize()}')`;
+  document.body.style.backgroundImage = setNewBackground();
   
   // Remove google logo image
   const imgs = document.getElementsByTagName('img')
@@ -34,6 +44,7 @@ window.addEventListener('load', (event) => {
   downloadButton.value = 'Download Background Image';
   downloadButton.ariaLabel = 'Download Background Image';
   
+  // Download Button listener to download background image
   downloadButton.addEventListener('click', (event) => {
     const link = document.createElement('a')
     link.href = document.body.style.backgroundImage.slice(5,-2);
@@ -49,9 +60,10 @@ window.addEventListener('load', (event) => {
   let searchButtonDiv = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center");
   searchButtonDiv.appendChild(downloadButton);
 });
+ 
 
-
+// Get new images and update background image
 setInterval(() => {
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${randomize()}')`;
-}, 8000);
+  setNewBackground();
+}, 5000);
 
