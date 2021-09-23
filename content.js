@@ -1,33 +1,23 @@
 // Variable to store our slideshow and slideshow interval
 let slideshow;
 let slideshowInterval = 5000;
+let searchWords = ['apple', 'fingers', 'gfuel', 'snake'];
 
 // Pick random string for unsplash search
 const randomize = () => {
-  const choice = Math.floor(Math.random() * 4);
-  switch(choice) {
-    case 0:
-      return 'apple';
-    case 1:
-      return 'fingers';
-    case 2:
-      return 'gfuel';
-    case 3:
-      return 'snake';
-    default:
-      return ''
-  }
+  const choice = Math.floor(Math.random() * searchWords.length);
+  return searchWords[choice];
 }
 
 // Fetch and set new background from unsplash
-const setNewBackground = (searchText = randomize()) => {
-  
-  fetch(`https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${searchText}`).then( data => {
+const setNewBackground = (searchText = randomize()) => {  
+  console.log(searchText);
+  fetch(`https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${searchText}`)
+    .then( data => {
     console.log('setting url...');
     console.log('url: ' + data.url);
     document.body.style.backgroundImage = `url(${data.url})`;         
   });
-
 }
 
 // Add download background image button
@@ -71,6 +61,10 @@ const generatePictureSearch = () => {
     
     // Get text input
     const searchText = document.querySelector("body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input").value;
+    
+    // Update default search words
+    searchWords = searchText.split(' ');
+
     stopSlideShow();
     setNewBackground(searchText);
   });
@@ -124,7 +118,6 @@ const generateStopSlideShowButton = () => {
   searchButtonDiv.appendChild(stopSlideShowButton);
 }
 
-
 const startSlideShow = () => {
   if (!slideshow) {
     slideshow = setInterval(() => {
@@ -140,12 +133,13 @@ const stopSlideShow = () => {
 }
 
 // On Initial Load
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
   
   // Get and set default background image on initial load
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "100% 100%";
   document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1568059985329-4a7bdd1154de?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=852&ixid=MnwxfDB8MXxyYW5kb218MHx8YXBwbGV8fHx8fHwxNjMyNDE2NjE0&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1745')";
+
   // Remove google logo image
   const imgs = document.getElementsByTagName('img')
   imgs[imgs.length - 2].remove();
