@@ -1,7 +1,8 @@
 // Variable to store our slideshow and slideshow interval
 let slideshow;
 let slideshowInterval = 5000;
-let searchWords = ['apple', 'fingers', 'gfuel', 'snake'];
+let searchWords = ['chickens', 'barn', 'farm', 'river', 'mountains', 'stars'];
+
 
 // Pick random string for unsplash search
 const randomize = () => {
@@ -11,11 +12,8 @@ const randomize = () => {
 
 // Fetch and set new background from unsplash
 const setNewBackground = (searchText = randomize()) => {  
-  console.log(searchText);
   fetch(`https://source.unsplash.com/random/${window.innerWidth}x${window.innerHeight}?${searchText}`)
     .then( data => {
-    console.log('setting url...');
-    console.log('url: ' + data.url);
     document.body.style.backgroundImage = `url(${data.url})`;         
   });
 }

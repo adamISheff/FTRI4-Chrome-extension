@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Background Image Generator",
-  "version": "1.1",
+  "name": "Google-Splash Background Slideshow",
+  "version": "1.1.0",
   "description": "Get an Unsplashed background slideshow while you search...",
-  "author" : "",
+  "author" : "Adam Sheff",
   "homepage_url": "http://google.com",
   "icons": { 
     "16": "./imgs/icon16.png",
